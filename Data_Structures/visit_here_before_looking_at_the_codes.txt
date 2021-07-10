@@ -1,1 +1,3 @@
+HERE,
+I am accounting for the data structures I am learning in my 2nd semester.
 
