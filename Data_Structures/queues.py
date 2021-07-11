@@ -93,7 +93,7 @@ for i in range(n):
 #question in class
 def largestarea(n,arr):
     st = []
-    max_area = min(arr)*n
+    max_area = -1
     for i in range(n):
         while len(st)>1 and arr[i]<arr[st[-1]]:
             nextsmaller = i
@@ -120,8 +120,8 @@ def largestarea(n,arr):
         # print('------------------------------')
 
     print(max_area)
-
-largestarea(7,[6,2,5,4,5,1,6])
+# if we add a -1 in the input array at the last this is to ensure that the case of perfectly increasing array does not fail here
+largestarea(7,[5,6,7,8,9,10,-1]) 
 
             
 
