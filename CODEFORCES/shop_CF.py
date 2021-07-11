@@ -7,26 +7,35 @@ def solve(n,f):
         
         
         
-        ans+=min(days,customers)
-        sorter.append(min(2*days,customers)-min(days,customers))
+        if days!=0 and customers>days:
+            diff = customers-days
+            ans+=days
+            if diff>days:
+                diff = days
+            sorter.append(diff)
+ 
+        elif days!=0:
+            ans+=customers
+            sorter.append(0)
+
+        else:
+            sorter.append(0)
+ 
         # print(ans)
-
-
+ 
+ 
     sorter.sort(reverse=True)
     # print(sorter)
     for i in range(f):
         ans+=sorter[i]
-
-
-
+ 
+ 
+ 
     print(ans)
     return
-
-
+ 
+ 
 n,f = map(int,input().split())
 solve(n,f)       
         
-
-
-
-    
+ 
