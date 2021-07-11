@@ -1,3 +1,4 @@
+# pop and push for a circular queue
 def pop_CQ(arr,head,tail):
     vacany = 0
     # if arr[head]==-1
@@ -89,12 +90,39 @@ for i in range(n):
 
 
 # Problem solving 
+#question in class
+def largestarea(n,arr):
+    st = []
+    max_area = min(arr)*n
+    for i in range(n):
+        while len(st)>1 and arr[i]<arr[st[-1]]:
+            nextsmaller = i
+            current = arr[st[-1]]
+            st.pop()
+            prevsmaller = st[-1]
+            max_area = max((i-st[-1]-1)*current,max_area)
+            # print(max_area,prevsmaller,current,nextsmaller)
 
+        
+        if len(st)==1 and arr[i]<arr[st[-1]]:
+            nextsmaller = i
+            prevsmaller = -1
+            current = arr[st[-1]]
+            st.pop()
+            max_area = max(max_area,current*(i-prevsmaller-1))
+            # print(max_area,prevsmaller,current,nextsmaller)  
 
+            
 
+        
+        st.append(i)
+        # print(st)
+        # print('------------------------------')
 
+    print(max_area)
 
+largestarea(7,[6,2,5,4,5,1,6])
 
-
+            
 
 
