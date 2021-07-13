@@ -12,7 +12,7 @@ void solve(ll n)
     ll arr[n];
     forloop_n
     {
-        cin >> arr[n];
+        cin >> arr[i];
     }
 
     sort(arr,arr+n);
