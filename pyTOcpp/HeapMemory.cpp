@@ -3,7 +3,7 @@
 // <datatype*> nameofptr = new <datatype>
 // initialize arr in heap memory
 // use delete feature
-// initialize 2D array in heap
+
 
 
 // TEMPLATE_JAAGRIT_ARORA
