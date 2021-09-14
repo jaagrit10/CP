@@ -19,11 +19,7 @@ void solve(ll n, ll arr[])
         
 
     }
-    // forloop_n
-    // {
-    //     cout << check[i] << " ";
-    // }
-    // cout << "\n";
+    
 
     forloop_n
     {
