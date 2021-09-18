@@ -7,56 +7,43 @@ using namespace std;
 #define And &&
 #define Or ||
 #define vi vector<ll>
-// #define pb(n) push_back(n)
+#define pb(n) push_back(n)
 
-bool pointconfirm(ll x1, ll y1, ll x2, ll y2, ll x, ll y)
-{
-    if (x>=x1 And x<=x2 And y>=y1 And y<=y2)
-    {
-        return true;
-    }
-    return false;
-}
-
-void solve(ll n, ll q, ll c)
-{
-    ll arr[n][3];
-    forloop_n
-    {
-        cin >> arr[i][0] >> arr[i][1] >> arr[i][2];
-
-    }
-
-    while (q--)
-    {
-        ll t,x1,y1,x2,y2; cin >> t >> x1 >> y1 >> x2 >> y2;
-        ll ans = 0;
-        forloop_n
-        {
-            ll x = arr[i][0];
-            ll y = arr[i][1];
-            ll z = arr[i][2];
-            if (pointconfirm(x1,y1,x2,y2,x,y))
-            {
-                // cout << x << " " << y << " " << (z+t) << endl;
-                
-                ans += (z+ (t)%(c+1))%(c+1);
-
-            }
-        }
-        // cout << "----------------" << endl;
-        cout << ans << "\n";
-        // cout << "----------------" << endl;
-    }
-
-}
-
+ 
 int main()
+{	
+	flash
+	ll n, q, c;
+	cin>>n>>q>>c;
+	ll dp[11][101][101]{0};
+	for(ll i = 0; i < n; i++){
+		ll x, y, s;
+		cin >> x >> y >> s;
+		for(ll time = 0; time <= c; time++){
+			dp[time][x][y] += s;
+			s += 1;
+			if (s > c){
+				s = 0;
+			}
+		}
+	}
+	for(ll time = 0; time <= c; time++){
+		for(ll i = 0; i <= 100; i++){
+			for(ll j = 0; j <= 100; j++){
+				dp[time][i][j] += dp[time][i - 1][j] + dp[time][i][j - 1] - dp[time][i - 1][j - 1];
+			}
+		}
+	}
+	
+	for(ll i = 0; i < q; i++){
+		ll t, x1, y1, x2, y2;
+		cin>>t>>x1>>y1>>x2>>y2;
+		t %= (c + 1);
+		cout<<(dp[t][x2][y2] - dp[t][x2][y1 - 1] - dp[t][x1 - 1][y2] + dp[t][x1 - 1][y1 - 1])<<endl;
+	}
 
-
-{
-    flash
-    ll n,q,c; cin >> n >> q >> c;
-    solve(n,q,c);
-    return 0;
+	// ll arr[2]{0};
+	// ll ans = arr[1];
+	// cout << ans;
+	return 0;
 }
