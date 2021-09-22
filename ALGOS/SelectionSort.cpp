@@ -1,55 +1,36 @@
 // TEMPLATE_JAAGRIT_ARORA
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int 
-#define flash ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-#define forloop_n for(ll i=0; i<n; i++)
-#define And &&
-#define Or ||
 
-
- 
-void swap(int *xp, int *yp)
+void selectionsort(int n, int arr[])
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
- 
-void selectionSort(int arr[], int n)
-{
-    int i, j, min_idx;
- 
-    // One by one move boundary of unsorted subarray
+    int i, j, idx_of_min_element;
     for (i = 0; i < n-1; i++)
     {
-        // Find the minimum element in unsorted array
-        min_idx = i;
+        idx_of_min_element = i;
         for (j = i+1; j < n; j++)
-        if (arr[j] < arr[min_idx])
-            min_idx = j;
- 
-        // Swap the found minimum element with the first element
-        swap(&arr[min_idx], &arr[i]);
+        if (arr[j] < arr[idx_of_min_element])
+            idx_of_min_element = j;
+        if (idx_of_min_element!=i)
+        {
+            swap(arr[idx_of_min_element],arr[i]);
+        }
     }
 }
- 
-/* Function to print an array */
-void printArray(int arr[], int size)
-{
-    int i;
-    for (i=0; i < size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-}
- 
-// Driver program to test above functions
+
 int main()
 {
-    int arr[] = {64, 25, 12, 22, 11};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    selectionSort(arr, n);
-    cout << "Sorted array: \n";
-    printArray(arr, n);
+    int n; cin >> n; // taking input the size of the array
+    int arr[n];
+    for(int i=0; i<n; i++) //taking input the elements of the array
+    {
+        cin >> arr[i];
+    }
+    
+    selectionsort(n,arr); // calling the sort function
+    for(int i=0; i<n; i++)          //printing the array after sorting
+    {
+        cout << arr[i] << " ";
+    }
     return 0;
 }
