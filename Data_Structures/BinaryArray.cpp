@@ -42,11 +42,7 @@ void solve(ll n, ll q, ll arr[])
         
     }
 
-    forloop_n
-    {
-        cout << arr[i] << " ";
-        return;
-    }
+    
 
 }
 
