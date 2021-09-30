@@ -10,20 +10,6 @@ using namespace std;
 #define pb(n) push_back(n)
 #define test_cases_loop ll t; cin >> t; while(t--)
 
-void solve(ll n ,ll m, ll k, ll arr[])
-{
-    for(ll i = n-1; i>=k; i--)
-    {
-        for ( ll j = 0; j<k-1; j++)
-        {
-            if (arr[i][j]=="*")
-            {
-                
-            }
-        }
-
-    }
-}
 
 
 int main()
@@ -35,12 +21,66 @@ int main()
     {
         ll n,m,k; cin >> n >> m >> k;
         char arr[n][m];
+        bool visited[n][m];
+        bool ans = true;
+        forloop_n
+        {
+        for (ll j = 0; j<m; j++)
+        {
+            visited[i][j]=false;
+        }
+        }
+
         forloop_n
         {
         for (ll j = 0; j<m; j++)
         {
             cin >> arr[i][j];
         }
+        }
+        forloop_n
+        {
+        // for (ll j = 0; j<m; j++)
+        // {
+        //     cout << arr[i][j];
+        // }
+        // cout <<"\n";
+        // }
+
+        for(ll i = n-1; i>=n-k; i--)
+        {
+            for ( ll j = 0; j<k-n-1-i; j++)
+            {
+                // cout << arr[i][j];
+                if (arr[i][j]=='*') 
+                {
+                    ans=false;
+                    
+                    
+                }
+            }
+
+            for (ll p = m-1; p>=m-(k-(n-1-i));p--)
+            {
+                cout << i << " "<< p <<endl;
+                if (arr[i][p]=='*')
+                {
+                    ans = false;
+                }
+            }
+            cout << endl;
+
+        }
+        cout << arr[4][6] << endl;
+
+
+
+        }
+
+        if (!ans)
+        {
+            cout << "NO" <<"\n";
+            
         }
 
         
