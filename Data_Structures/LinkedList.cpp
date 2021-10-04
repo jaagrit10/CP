@@ -227,7 +227,7 @@ int main()
         cur = cur->next;
     }
 
-    cur->next = ptr;
+    // cur->next = ptr;
 
     node* curi = l.head;
 
