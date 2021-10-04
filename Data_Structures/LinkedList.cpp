@@ -218,9 +218,76 @@ int main()
     {
         l.push_back(i+1);
     }
-    l.printlinkedlist();
-    node *newhead = l.reverse_k_at_a_time(l.head);
-    l.head = newhead;
-    l.printlinkedlist();
+
+    node* ptr = l.head->next->next;
+    node* cur = l.head;
+
+    while(cur->next!=NULL)
+    {
+        cur = cur->next;
+    }
+
+    cur->next = ptr;
+
+    node* curi = l.head;
+
+    for (ll i = 0; i <=8; i++)
+    {
+        cout << curi->data << endl;
+        curi = curi->next;
+    }
+
+
+    node* slow = l.head;
+    node* fast = l.head;
+
+    while(slow!=NULL And fast->next!=NULL And fast!=NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow==fast)
+        {
+            cout << "YES" << endl;
+
+            ll count = 1;
+            node* check = slow->next;
+
+
+            while(check!=slow)
+            {
+                count++;
+                check = check->next;
+            }
+
+            node* newptr = l.head;
+
+            while(count--)
+            {
+                newptr = newptr->next;
+            }
+            node* final = l.head;
+
+            while(newptr!=final)
+            {
+                newptr = newptr->next;
+                final = final->next;
+            }
+
+
+            cout << newptr->data << " " << final->data << endl;
+            break;
+
+        }
+
+
+
+    }
+
+
+
+
+    
+
+    
     return 0;
 }
