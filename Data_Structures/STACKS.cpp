@@ -9,6 +9,10 @@ using namespace std;
 #define vi vector<ll>
 #define pb(n) push_back(n)
 #define test_cases_loop ll t; cin >> t; while(t--)
+void InfixToPostfix()
+{
+    
+}
 int main()
 
 
@@ -31,7 +35,7 @@ int main()
 
         if ( bottom.size()!=0 And bottom.top()==count)
         {
-            cout << bottom.top() << endl;
+            // cout << bottom.top() << endl;
             count++;
             bottom.pop();
             continue;
